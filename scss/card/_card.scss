@@ -1,0 +1,43 @@
+body {
+  height: 100vh;
+  background-color: #060606;
+  display: grid;
+  place-content: center;
+}
+.card-container {
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+}
+.card {
+  height: 280px;
+  width: 300px;
+  color: white;
+  padding: 0;
+  margin: 0;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.02);
+  position: relative;
+}
+.card::before {
+  content: "";
+  opacity: 0;
+  transition: opacity 500ms;
+  border-radius: inherit;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.1),
+    transparent 40%
+  );
+}
+.card:hover::before {
+  opacity: 1;
+}
